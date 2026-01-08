@@ -1,3 +1,6 @@
+import telegram
+print("Telegram version:", telegram.__version__)
+print("Updater in dir(telegram.ext):", 'Updater' in dir(telegram.ext))
 import os
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
@@ -23,3 +26,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
