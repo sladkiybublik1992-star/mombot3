@@ -1,30 +1,21 @@
-import telegram
-print("Telegram module:", telegram)
-print("Telegram version:", getattr(telegram, '__version__', 'unknown'))
+# main.py — минимальный рабочий бот
 import os
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 async def start(update: Update, context):
-    kb = [["Тест"]]
-    await update.message.reply_text(
-        "Привет! Бот работает 🌸",
-        reply_markup=ReplyKeyboardMarkup(kb, resize_keyboard=True)
-    )
+    await update.message.reply_text("Бот работает! 🌸")
 
-async def msg(update: Update, context):
+async def echo(update: Update, context):
     await update.message.reply_text("Я тебя слышу 💛")
 
 def main():
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT, msg))
+    app.add_handler(MessageHandler(filters.TEXT, echo))
     app.run_polling()
 
 if __name__ == "__main__":
-
     main()
-
-
