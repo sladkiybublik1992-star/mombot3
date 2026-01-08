@@ -1,6 +1,5 @@
 # main.py — минимальный рабочий бот
 import os
-from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 TOKEN = os.getenv("TELEGRAM_TOKEN")
@@ -19,3 +18,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
